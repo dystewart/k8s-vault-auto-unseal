@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: check-vault-seal-status
+spec:
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: check-vault-seal-status
+        spec: 
+          volumes:
+            - name: check-vault-seal-status-script
+              configMap:
+                name: check-vault-seal-status-script
