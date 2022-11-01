@@ -1,8 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: check-vault-seal-status-script
+  name: check-vault-seal-status
 data:
   check-vault-seal.sh: |
-    
+    set -ue
+    vault status
 ---

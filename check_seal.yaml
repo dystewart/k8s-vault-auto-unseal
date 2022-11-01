@@ -12,7 +12,17 @@ spec:
         metadata:
           name: check-vault-seal-status
         spec: 
+          containers:
+            - name: run-seal-check
+              image: quay.io/dystewar/vault-unseal:latest
+              imagePullPolicy: IfNotPresent
+              command: ["bash"]
+              args: 
+                - /scripts/check-vault-seal.sh
+              volumeMounts: 
+                - mountPath: /scripts
+                  name: script
           volumes:
-            - name: check-vault-seal-status-script
+            - name: script
               configMap:
-                name: check-vault-seal-status-script
+                name: check-vault-seal-status      
