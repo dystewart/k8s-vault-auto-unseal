@@ -4,6 +4,7 @@ metadata:
   name: check-vault-seal-status
 data:
   check-vault-seal.sh: |
+    #!/bin/bash
     set -ue
     vault status
 ---
